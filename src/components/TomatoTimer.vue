@@ -1,6 +1,11 @@
 <script>
 export default {
   name: "TomatoTimer",
+  data() {
+    return {
+      msg: "",
+    };
+  },
 };
 </script>
 
@@ -20,7 +25,9 @@ export default {
           </ul>
         </div>
       </div>
-      <h1>Here is where we do page then we separate it with components</h1>
+      <h1>
+        Here is where we do page then we separate it with components {{ msg }}
+      </h1>
     </div>
   </div>
 </template>
@@ -46,9 +53,11 @@ export default {
   display: flex;
   flex-flow: row nowrap;
 }
+
 .title {
   width: 50%;
 }
+
 .links {
   display: flex;
   flex-flow: row nowrap;
@@ -58,6 +67,7 @@ export default {
   background: rgb(80, 80, 80);
   height: 50%;
 }
+
 .ul-links {
   width: 100%;
   list-style-type: none;
