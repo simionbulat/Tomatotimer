@@ -1,6 +1,19 @@
 <script>
+import Header from "../components/Header.vue";
+import Timer from "../components/Timer.vue";
+import TimerButton from "./TimerButton.vue";
+import TimerControlButton from "./TimerControlButton.vue";
+import Footer from "./Footer.vue";
 export default {
   name: "TomatoTimer",
+  components: {
+    Header,
+    Timer,
+    TimerButton,
+    TimerControlButton,
+    Footer,
+  },
+
   data() {
     return {
       msg: "",
@@ -13,21 +26,24 @@ export default {
   <div class="main">
     <div class="content">
       <div class="header">
-        <div class="title">
-          <h1>Tomato Timer</h1>
-        </div>
-        <div class="links">
-          <ul class="ul-links">
-            <li><a href="">Link</a></li>
-            <li><a href="">FAQ</a></li>
-            <li><a href="">Settings</a></li>
-            <li><a href="">Tweet about us!</a></li>
-          </ul>
-        </div>
+        <Header />
       </div>
-      <h1>
-        Here is where we do page then we separate it with components {{ msg }}
-      </h1>
+      <div class="timerButtons">
+        <timer-button name="Pomodoro" timer="25" />
+        <timer-button name="Short" timer="5" />
+        <timer-button name="Long" timer="10" />
+      </div>
+      <div>
+        <Timer />
+      </div>
+      <div class="controlButtons">
+        <timer-control-button title="start" color="#067e0c" />
+        <timer-control-button title="stop" color="#8b0000" />
+        <timer-control-button title="reset" color="#efefef" />
+      </div>
+      <div class="footer">
+        <Footer />
+      </div>
     </div>
   </div>
 </template>
@@ -37,49 +53,40 @@ export default {
 .main {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-
   display: flex;
   width: 90%;
   height: 100%;
   margin: 0 auto;
 }
+
 .content {
   width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-self: center;
 }
-.header {
-  background-color: #f2f2f2;
-  height: 100px;
-  width: 100%;
+.timerButtons {
   display: flex;
   flex-flow: row nowrap;
+  margin: 55px auto 0 auto;
 }
-
-.title {
-  width: 50%;
+.timerButtons * {
+  width: 300px;
 }
-
-.links {
+.controlButtons {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-content: center;
-  margin: auto;
-  background: rgb(80, 80, 80);
-  height: 50%;
+  margin: 0 auto;
 }
-
-.ul-links {
-  width: 100%;
-  list-style-type: none;
-  text-align: center;
-  padding: 0 15px;
+.controlButtons * {
+  width: 100px;
+  margin: 0 25px;
 }
-.ul-links li {
-  display: inline;
-  margin: 0 15px;
-}
-.ul-links a {
-  text-decoration: none;
-  color: #e6e6e6;
+.footer {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 25px auto;
 }
 </style>
