@@ -4,7 +4,7 @@ import { useStore } from "vuex";
 export default {
   data() {
     return {
-      timer: new Date().getUTCMinutes(),
+      timer: "",
       // timer: new Date().toTimeString(),
     };
   },
@@ -19,7 +19,7 @@ export default {
 
 <template>
   <div class="timer">
-    <h1 class="timer-number">{{ timer }}</h1>
+    <h1 class="timer-number">{{ longTimer }}</h1>
   </div>
 </template>
 

@@ -1,9 +1,9 @@
 <script>
-import Header from "../components/Header.vue";
+import Header from "./TheHeader.vue";
 import Timer from "../components/Timer.vue";
 import TimerButton from "./TimerButton.vue";
 import TimerControlButton from "./TimerControlButton.vue";
-import Footer from "./Footer.vue";
+import Footer from "./TheFooter.vue";
 export default {
   name: "TomatoTimer",
   components: {

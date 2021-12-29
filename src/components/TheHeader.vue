@@ -38,6 +38,8 @@ export default {};
   margin: auto;
   background: rgb(80, 80, 80);
   height: 50%;
+  border: 1px solid #e6e6e6;
+  border-radius: 2%;
 }
 
 .ul-links {

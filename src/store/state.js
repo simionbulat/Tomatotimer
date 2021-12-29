@@ -4,6 +4,7 @@
 //     }
 // }
 export default {
-    longTimer: 25.00,
-    shortTimer: 5.00
+    longTimer: 25,
+    shortTimer: 5,
+    actualTimer: 0
 }

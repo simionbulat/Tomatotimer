@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: { name: String, timer: Number },
+  props: { name: String, timer: { type: String, coerce: (str) => +str } },
   data() {
     return {
       //   buttonName: this.name || "Pomodoro",
@@ -31,6 +31,7 @@ button {
   height: 25px;
   background: #d6b96f;
   border: 1px solid green;
+  border-radius: 2%;
 }
 button:hover {
   background: green;
