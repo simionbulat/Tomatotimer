@@ -5,6 +5,7 @@ import TomatoTimer from "@/components/TomatoTimer.vue"
 describe("TomatoTimer", function () {
     it("should contain a div", function () {
         const wrapper = mount(TomatoTimer)
+
         const div = wrapper.find('div')
         expect(div.exists()).toBe(true)
     })

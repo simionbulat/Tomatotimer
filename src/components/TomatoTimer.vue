@@ -30,8 +30,8 @@ export default {
       </div>
       <div class="timerButtons">
         <timer-button name="Pomodoro" timer="25" />
-        <timer-button name="Short" timer="5" />
-        <timer-button name="Long" timer="10" />
+        <timer-button name="Short Break" timer="5" />
+        <timer-button name="Long Break" timer="10" />
       </div>
       <div>
         <Timer />

@@ -1,4 +1,5 @@
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   props: { name: String, timer: { type: String, coerce: (str) => +str } },
   data() {
@@ -8,11 +9,25 @@ export default {
       buttonTimer: this.timer,
     };
   },
+  computed: mapState({
+    getLongTimer: (state) => state.longTimer,
+    getDefaultTimer: (state) => state.defaultTimer,
+    getShortTimer: (state) => state.shortTimer,
+  }),
+
   methods: {
-    changeTimer: function (event) {
-      console.log("timer was clicked to change to ", this.timer);
-      if (event) {
-        alert(event.target.tagName);
+    ...mapActions(["changeTimer"]),
+    changeTheTimer: function () {
+      switch (this.name) {
+        case "Pomodoro":
+          this.changeTimer(this.getDefaultTimer);
+          break;
+        case "Short Break":
+          this.changeTimer(this.getShortTimer);
+          break;
+        case "Long Break":
+          this.changeTimer(this.getLongTimer);
+          break;
       }
     },
   },
@@ -21,7 +36,9 @@ export default {
 
 <template>
   <div>
-    <button type="button" v-on:click="changeTimer()">{{ buttonName }}</button>
+    <button type="button" v-on:click="changeTheTimer()">
+      {{ buttonName }}
+    </button>
   </div>
 </template>
 

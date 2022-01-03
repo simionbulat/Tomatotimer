@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from "vuex";
 export default {
   props: { title: String, color: String },
   data() {
@@ -7,9 +8,18 @@ export default {
       buttonColor: this.color,
     };
   },
+  computed: {
+    ...mapActions(["clearTheInterval", "resetTimer", "timerWorking"]),
+  },
   methods: {
     doAction() {
-      console.log("clicked on timer control button", this.buttonName);
+      if (this.title === "stop") {
+        this.clearTheInterval;
+      } else if (this.title === "start") {
+        this.timerWorking;
+      } else {
+        this.resetTimer;
+      }
     },
   },
 };
