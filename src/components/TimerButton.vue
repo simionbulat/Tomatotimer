@@ -1,12 +1,10 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
-  props: { name: String, timer: { type: String, coerce: (str) => +str } },
+  props: { name: String },
   data() {
     return {
-      //   buttonName: this.name || "Pomodoro",
       buttonName: this.name,
-      buttonTimer: this.timer,
     };
   },
   computed: mapState({

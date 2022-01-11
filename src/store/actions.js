@@ -3,7 +3,7 @@ export default {
         commit('changeTimer', payload)
     },
     timerWorking({ commit }) {
-        setTimeout(() => {
+        setInterval(() => {
             commit("updateTimerOneLessSecond")
         }, 1000)
     },
