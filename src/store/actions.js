@@ -3,14 +3,19 @@ export default {
         commit('changeTimer', payload)
     },
     timerWorking({ commit }) {
-        setInterval(() => {
-            commit("updateTimerOneLessSecond")
-        }, 1000)
-    },
-    clearTheInterval({ commit }) {
-        commit("clearTheInterval")
+        commit("updateTimerOneLessSecond")
     },
     resetTimer({ commit }) {
         commit("resetTimer")
+    },
+    setTimerNow({ commit, state }) {
+        if (!state.interval) {
+            commit("setIntervalTimer", () => commit("updateTimerOneLessSecond"))
+        }
+    },
+    clearTimerNow({ commit }) {
+        commit("clearIntervalTimer");
     }
+
+
 }

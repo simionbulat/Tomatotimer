@@ -9,14 +9,20 @@ export default {
     };
   },
   computed: {
-    ...mapActions(["clearTheInterval", "resetTimer", "timerWorking"]),
+    ...mapActions([
+      "clearTheInterval",
+      "resetTimer",
+      "timerWorking",
+      "setTimerNow",
+      "clearTimerNow",
+    ]),
   },
   methods: {
     doAction() {
       if (this.title === "stop") {
-        this.clearTheInterval;
+        this.clearTimerNow;
       } else if (this.title === "start") {
-        this.timerWorking;
+        this.setTimerNow;
       } else {
         this.resetTimer;
       }

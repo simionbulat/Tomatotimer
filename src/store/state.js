@@ -4,4 +4,5 @@ export default {
     shortTimer: 5 * 60,
     actualTimer: 0,
     defaultTimer: 25 * 60,
+    interval: null,
 }
