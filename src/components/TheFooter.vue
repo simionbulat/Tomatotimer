@@ -51,6 +51,7 @@ span {
 .settings {
   padding: 13px;
   width: 33%;
+  text-align: start;
 }
 button {
   background: #d6b96f;
