@@ -4,13 +4,16 @@ export default {};
 <template>
   <div class="header">
     <div class="title">
-      <h1>Tomato Timer</h1>
+      <router-link to="/"> <h1>Tomato Timer</h1></router-link>
+      <!-- <h1>tomato timer</h1> -->
     </div>
     <div class="links">
       <ul class="ul-links">
         <li><a href="">Link</a></li>
         <li><a href="">FAQ</a></li>
-        <li><a href="">Settings</a></li>
+        <li>
+          <router-link to="/settings">Settings</router-link>
+        </li>
         <li><a href="">Tweet about us!</a></li>
       </ul>
     </div>
@@ -55,6 +58,15 @@ export default {};
 .ul-links a {
   text-decoration: none;
   color: #e6e6e6;
+}
+a {
+  text-decoration: none;
+}
+a h1 {
+  color: #161515;
+}
+a.router-link-exact-active h1 {
+  color: #363531;
 }
 </style>
 

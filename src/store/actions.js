@@ -7,6 +7,7 @@ export default {
     },
     resetTimer({ commit }) {
         commit("resetTimer")
+        commit("clearIntervalTimer");
     },
     setTimerNow({ commit, state }) {
         if (!state.interval) {
@@ -15,7 +16,8 @@ export default {
     },
     clearTimerNow({ commit }) {
         commit("clearIntervalTimer");
+    },
+    setSupposedTimer({ commit }, payload) {
+        commit("setSupposedTimer", payload)
     }
-
-
 }

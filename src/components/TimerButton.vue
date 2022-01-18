@@ -14,17 +14,22 @@ export default {
   }),
 
   methods: {
-    ...mapActions(["changeTimer"]),
+    ...mapActions(["changeTimer", "setSupposedTimer"]),
     changeTheTimer: function () {
       switch (this.name) {
         case "Pomodoro":
           this.changeTimer(this.getDefaultTimer);
+          this.setSupposedTimer(this.getDefaultTimer);
           break;
         case "Short Break":
           this.changeTimer(this.getShortTimer);
+          this.setSupposedTimer(this.getShortTimer);
+
           break;
         case "Long Break":
           this.changeTimer(this.getLongTimer);
+          this.setSupposedTimer(this.getLongTimer);
+
           break;
       }
     },

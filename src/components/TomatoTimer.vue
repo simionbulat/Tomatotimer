@@ -1,17 +1,13 @@
 <script>
-import Header from "./TheHeader.vue";
 import Timer from "../components/Timer.vue";
 import TimerButton from "./TimerButton.vue";
 import TimerControlButton from "./TimerControlButton.vue";
-import Footer from "./TheFooter.vue";
 export default {
   name: "TomatoTimer",
   components: {
-    Header,
     Timer,
     TimerButton,
     TimerControlButton,
-    Footer,
   },
 
   data() {
@@ -25,9 +21,6 @@ export default {
 <template>
   <div class="main">
     <div class="content">
-      <div class="header">
-        <Header />
-      </div>
       <div class="timerButtons">
         <timer-button name="Pomodoro" />
         <timer-button name="Short Break" />
@@ -81,12 +74,5 @@ export default {
 .controlButtons * {
   width: 100px;
   margin: 0 25px;
-}
-.footer {
-  width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-flow: row nowrap;
-  margin: 25px auto;
 }
 </style>

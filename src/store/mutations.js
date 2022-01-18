@@ -10,7 +10,7 @@ export default {
         state.actualTimer--
     },
     resetTimer(state) {
-        state.actualTimer = state.defaultTimer;
+        state.actualTimer = state.supossedTimer;
     },
     setIntervalTimer(state, callback) {
         state.interval = setInterval(() => {
@@ -24,5 +24,14 @@ export default {
             clearInterval(state.interval)
             state.interval = null;
         }
+    },
+    updateTitleNotification(state, payload) {
+        state.titleNotification = payload;
+    },
+    updateBrowserNotification(state, payload) {
+        state.browserNotification = payload;
+    },
+    setSupposedTimer(state, payload) {
+        state.supossedTimer = payload;
     }
 }

@@ -62,4 +62,11 @@ button {
   border: 1px solid #efefef;
   border-radius: 2%;
 }
+.footer {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 25px auto;
+}
 </style>
