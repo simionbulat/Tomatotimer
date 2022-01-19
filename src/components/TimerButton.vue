@@ -9,7 +9,7 @@ export default {
   },
   computed: mapState({
     getLongTimer: (state) => state.longTimer,
-    getDefaultTimer: (state) => state.defaultTimer,
+    getPomodoroTimer: (state) => state.pomodoroTimer,
     getShortTimer: (state) => state.shortTimer,
   }),
 
@@ -18,8 +18,8 @@ export default {
     changeTheTimer: function () {
       switch (this.name) {
         case "Pomodoro":
-          this.changeTimer(this.getDefaultTimer);
-          this.setSupposedTimer(this.getDefaultTimer);
+          this.changeTimer(this.getPomodoroTimer);
+          this.setSupposedTimer(this.getPomodoroTimer);
           break;
         case "Short Break":
           this.changeTimer(this.getShortTimer);

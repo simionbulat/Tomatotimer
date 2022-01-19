@@ -1,25 +1,60 @@
 <script>
 import { mapState } from "vuex";
+import { Howl, Howler } from "howler";
 export default {
   name: "Settings",
   data() {
     return {
       message: "sal",
+      soundKey: "",
+      volumeKey: "",
     };
   },
   computed: {
     ...mapState({
       titleNotification: (state) => state.titleNotification,
       browserNotification: (state) => state.browserNotification,
-      defaultTimer: (state) => state.defaultTimer,
+      pomodoroTimer: (state) => state.pomodoroTimer,
       shortTimer: (state) => state.shortTimer,
       longTimer: (state) => state.longTimer,
       numberOfDailyPomodoros: (state) => state.numberOfDailyPomodoros,
+      defaultSoundSrc: (state) => state.defaultSoundSrc,
+      actualSoundSrc: (state) => state.actualSoundSrc,
+      defaultTimerVolumes: (state) => state.defaultTimerVolumes,
+      actualVolume: (state) => state.actualVolume,
     }),
   },
   methods: {
     updateTitleNotification(e) {
       this.$store.commit("updateTitleNotification", e.target.value);
+    },
+    playSound() {
+      let sound = new Howl({
+        src: [this.actualSoundSrc],
+      });
+      sound.play();
+      Howler.volume(this.actualVolume);
+    },
+    selectSound(event) {
+      this.$store.commit(
+        "setSoundSource",
+        this.defaultSoundSrc[event.target.value]
+      );
+    },
+    selectVolume(event) {
+      // console.log(
+      //   "volumu selectat este",
+      //   this.defaultTimerVolumes[event.target.value]
+      // );
+      this.$store.commit(
+        "setVolume",
+        this.defaultTimerVolumes[event.target.value]
+      );
+      console.log("s a apasat p select volume", event.target.value);
+      console.log(
+        "ceea ce e echivalentu la ",
+        this.defaultTimerVolumes[event.target.value]
+      );
     },
   },
 };
@@ -60,18 +95,30 @@ export default {
       <br />
       <div class="box">
         <h3>Select Sound</h3>
-        <select name="selectSound" id="sound" size="5">
-          <option value="80sAlarm">80s Alarm</option>
-          <option value="alarmclock">Alarm Clock</option>
-          <option value="alarmwatch">Alarm Watch</option>
-          <option value="ding">Elevator Ding</option>
+        <select
+          name="selectSound"
+          id="sound"
+          size="5"
+          @change="selectSound($event)"
+          v-model="soundKey"
+        >
+          <option value="analogalarm">Analog Alarm</option>
+          <option value="beep">Beep</option>
+          <option value="bell">Door Bell</option>
+          <option value="elevatorDing">Elevator Ding</option>
           <option value="doorbell">Door Bell</option>
         </select>
       </div>
       <br />
       <div class="box">
         <h3>Select Volume</h3>
-        <select name="selectVolume" id="volume" size="5">
+        <select
+          name="selectVolume"
+          id="volume"
+          size="5"
+          @change="selectVolume($event)"
+          v-model="volumeKey"
+        >
           <option value="mute">Mute</option>
           <option value="25%">25%</option>
           <option value="50%">50%</option>
@@ -86,7 +133,7 @@ export default {
       <div class="customTimers box">
         <div class="customTimer">
           <label for="">Pomodoro</label>
-          <input type="number" min="1" max="99" :value="defaultTimer / 60" />
+          <input type="number" min="1" max="99" :value="pomodoroTimer / 60" />
         </div>
         <div class="customTimer">
           <label for="">Short Timer</label>
@@ -98,9 +145,10 @@ export default {
         </div>
       </div>
       <div class="buttons box">
-        <button>Save</button>
+        <router-link to="/"><button>Save</button></router-link>
+
         <button>Reset</button>
-        <button>Sound Test</button>
+        <button @click="playSound()">Sound Test</button>
       </div>
     </div>
   </div>

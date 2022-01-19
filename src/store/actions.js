@@ -19,5 +19,6 @@ export default {
     },
     setSupposedTimer({ commit }, payload) {
         commit("setSupposedTimer", payload)
-    }
+    },
+
 }

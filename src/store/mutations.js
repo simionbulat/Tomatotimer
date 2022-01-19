@@ -33,5 +33,14 @@ export default {
     },
     setSupposedTimer(state, payload) {
         state.supossedTimer = payload;
+    },
+    setSoundSource(state, payload) {
+        state.actualSoundSrc = payload;
+    },
+    setVolume(state, payload) {
+        state.actualVolume = payload;
+    },
+    setCustomTimer(state, payload) {
+        state.customTimer = payload;
     }
 }
