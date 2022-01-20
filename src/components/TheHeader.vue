@@ -9,8 +9,12 @@ export default {};
     </div>
     <div class="links">
       <ul class="ul-links">
+        <li>
+          <router-link to="/faq">
+            <a href="">FAQ</a>
+          </router-link>
+        </li>
         <li><a href="">Link</a></li>
-        <li><a href="">FAQ</a></li>
         <li>
           <router-link to="/settings">Settings</router-link>
         </li>

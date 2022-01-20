@@ -35,12 +35,21 @@ export default {
         state.supossedTimer = payload;
     },
     setSoundSource(state, payload) {
-        state.actualSoundSrc = payload;
+        state.settings.actualSoundSrc = payload;
     },
     setVolume(state, payload) {
-        state.actualVolume = payload;
+        state.settings.actualVolume = payload;
     },
     setCustomTimer(state, payload) {
-        state.customTimer = payload;
+        state.settings.customTimer = payload;
+    },
+    setCustomPomodoroTimer(state, payload) {
+        state.settings.pomodoroTimer = Number(payload);
+    },
+    setCustomShortTimer(state, payload) {
+        state.settings.shortTimer = Number(payload);
+    },
+    setCustomLongTimer(state, payload) {
+        state.settings.longTimer = Number(payload);
     }
 }
