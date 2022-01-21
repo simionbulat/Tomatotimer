@@ -18,7 +18,6 @@ export default {
         defaultSoundSrc: {
             "analogalarm": "/sounds/analog-alarm-clock.wav",
             "beep": "/sounds/beep.mp3",
-            "bell": "/sounds/bell.wav",
             "doorbell": "/sounds/doorbell-e.wav",
             "elevatorDing": "/sounds/elevator-ding.wav"
         },
