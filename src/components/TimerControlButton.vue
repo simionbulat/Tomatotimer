@@ -27,6 +27,9 @@ export default {
         this.resetTimer;
       }
     },
+    DoStuff() {
+      console.log("o mers butonu");
+    },
   },
 };
 </script>
