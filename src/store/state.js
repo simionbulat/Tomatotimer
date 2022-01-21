@@ -25,8 +25,9 @@ export default {
         actualSoundSrc: "/sounds/analog-alarm-clock.wav",
         customTimer: null,
         defaultSettings: {
-            "titleNotification": "false",
-            "numberOfDailyPomodoros": "1",
+            "timerIndication": "false",
+            "browserIndication": "false",
+            "pomodoroGoal": "1",
             "defaultSoundSrc": "/sounds/analog-alarm-clock.wav",
             "defaultVolume": "0.5",
             "customTimes": {

@@ -5,6 +5,7 @@ export default {
   name: "Settings",
   data() {
     return {
+      message: "message",
       soundKey: "",
       volumeKey: "",
       customPomodoro: "",
@@ -84,7 +85,7 @@ export default {
   <div class="content">
     <div class="actualContent">
       <div class="box">
-        <div>{{ settings }}</div>
+        <p>{{ settings }}</p>
         <h1>Options</h1>
         <h2>User Preferences</h2>
         <input
@@ -95,6 +96,16 @@ export default {
         />
         <label for="timerNotifications">Timer indication in title?</label>
       </div>
+
+      <!-- <div class="box">
+        <input
+          id="browserNotification"
+          type="checkbox"
+          v-model="this.settings.browserNotification"
+          @change="UpdateBrowserNotification($event)"
+        />
+        <label for="browserNotification">Browser Notifications?</label>
+      </div> -->
       <div class="box">
         <label for="pomodoroGoal">Pomodoro goal for the day </label>
         <input
@@ -180,6 +191,7 @@ export default {
         <router-link to="/"
           ><button @click="SaveToLocal()">Save</button></router-link
         >
+
         <button>Reset</button>
         <button @click="PlaySound()">Sound Test</button>
       </div>
