@@ -8,14 +8,14 @@ export default {
     };
   },
   computed: mapState({
-    getLongTimer: (state) => state.longTimer,
-    getPomodoroTimer: (state) => state.pomodoroTimer,
-    getShortTimer: (state) => state.shortTimer,
+    getLongTimer: (state) => state.settings.longTimer,
+    getPomodoroTimer: (state) => state.settings.pomodoroTimer,
+    getShortTimer: (state) => state.settings.shortTimer,
   }),
 
   methods: {
     ...mapActions(["changeTimer", "setSupposedTimer"]),
-    changeTheTimer: function () {
+    ChangeTheTimer: function () {
       switch (this.name) {
         case "Pomodoro":
           this.changeTimer(this.getPomodoroTimer);
@@ -38,8 +38,8 @@ export default {
 </script>
 
 <template>
-  <div>
-    <button type="button" v-on:click="changeTheTimer()">
+  <div class="btn">
+    <button type="button" v-on:click="ChangeTheTimer()">
       {{ buttonName }}
     </button>
   </div>
@@ -47,13 +47,22 @@ export default {
 
 <style scoped>
 button {
+  border: none;
+}
+.btn {
+  margin: 0 1px;
+  width: 30%;
+}
+.btn button {
   width: 100%;
   height: 25px;
   background: #d6b96f;
-  border: 1px solid green;
-  border-radius: 2%;
+  border-bottom: 1px solid rgb(79, 197, 79);
+  border-radius: 1%;
+  box-shadow: 1px 1px rgb(211, 51, 51);
+  box-shadow: inherit;
 }
 button:hover {
-  background: green;
+  background: rgb(79, 197, 79);
 }
 </style>

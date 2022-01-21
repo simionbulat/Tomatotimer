@@ -5,7 +5,7 @@ export default {
   name: "Settings",
   data() {
     return {
-      message: "sal",
+      message: "message",
       soundKey: "",
       volumeKey: "",
       customPomodoro: "",
@@ -13,12 +13,11 @@ export default {
       customLongTimer: "",
       localSessionStore: {},
       getLocalSessionStore: {},
+      actualSettings: {},
     };
   },
-  oncreate: {
-    getLocalSession() {
-      this.getLocalSessionStore = localStorage.getItem("timerStore");
-    },
+  mounted() {
+    this.getLocalSession();
   },
 
   computed: {
@@ -27,46 +26,55 @@ export default {
     }),
   },
   methods: {
-    updateTitleNotification(e) {
-      this.$store.commit("updateTitleNotification", e.target.value);
+    getLocalSession() {
+      this.getLocalSessionStore = JSON.parse(localStorage.getItem("settings"));
+      this.$store.commit("updateSettings", this.getLocalSessionStore);
     },
-    playSound() {
+    // UpdateTitleNotification(e) {
+    //   console.log(e);
+
+    //   // this.$store.commit("updateTitleNotification", e.target.value);
+    // },
+    // UpdateBrowserNotification(e) {
+    //   // this.$store.commit("updateBrowserNotification", e.target.value);
+    // },
+    UpdatePomodoroGoal(e) {
+      this.$store.commit("updatePomodoroGoal", e.target.value);
+    },
+    PlaySound() {
       let sound = new Howl({
         src: [this.settings.actualSoundSrc],
       });
       sound.play();
       Howler.volume(this.settings.actualVolume);
     },
-    selectSound(event) {
+    SelectSound(event) {
       this.$store.commit(
         "setSoundSource",
         this.settings.defaultSoundSrc[event.target.value]
       );
     },
-    selectVolume(event) {
+    SelectVolume(event) {
       this.$store.commit(
         "setVolume",
         this.settings.defaultTimerVolumes[event.target.value]
       );
     },
-    setCustomPomodoroTimer(event) {
+    SetCustomPomodoroTimer(event) {
       this.$store.commit("setCustomPomodoroTimer", event.target.value * 60);
     },
-    setCustomShortTimer(event) {
+    SetCustomShortTimer(event) {
       this.$store.commit("setCustomShortTimer", event.target.value * 60);
     },
-    setCustomLongTimer(event) {
+    SetCustomLongTimer(event) {
       this.$store.commit("setCustomLongTimer", event.target.value * 60);
     },
-    saveToLocal() {
+    SaveToLocal() {
       if (!localStorage) {
         console.log("Local Storage is not supported");
       } else {
-        // localStorage.setItem("timerStore", this.localSessionStore);
-        localStorage.setItem("timerStore", this.message);
-
-        console.log(localStorage.getItem("timerStore"));
-        console.log(this.localSessionStore);
+        localStorage.clear();
+        localStorage.setItem("settings", JSON.stringify(this.settings));
       }
     },
   },
@@ -77,12 +85,14 @@ export default {
   <div class="content">
     <div class="actualContent">
       <div class="box">
+        <p>{{ settings }}</p>
         <h1>Options</h1>
         <h2>User Preferences</h2>
         <input
           id="timerNotifications"
           type="checkbox"
-          :value="this.settings.titleNotification"
+          v-model="this.settings.titleNotification"
+          @change="UpdateTitleNotification($event)"
         />
         <label for="timerNotifications">Timer indication in title?</label>
       </div>
@@ -91,7 +101,8 @@ export default {
         <input
           id="browserNotification"
           type="checkbox"
-          :value="this.settings.browserNotification"
+          v-model="this.settings.browserNotification"
+          @change="UpdateBrowserNotification($event)"
         />
         <label for="browserNotification">Browser Notifications?</label>
       </div>
@@ -103,6 +114,7 @@ export default {
           max="50"
           maxlength="3"
           :value="this.settings.numberOfDailyPomodoros"
+          @change="UpdatePomodoroGoal($event)"
         />
       </div>
       <br />
@@ -112,7 +124,7 @@ export default {
           name="selectSound"
           id="sound"
           size="5"
-          @change="selectSound($event)"
+          @change="SelectSound($event)"
           v-model="soundKey"
         >
           <option value="analogalarm">Analog Alarm</option>
@@ -129,7 +141,7 @@ export default {
           name="selectVolume"
           id="volume"
           size="5"
-          @change="selectVolume($event)"
+          @change="SelectVolume($event)"
           v-model="volumeKey"
         >
           <option value="mute">Mute</option>
@@ -151,7 +163,7 @@ export default {
             min="1"
             max="99"
             :value="settings.pomodoroTimer / 60"
-            @change="setCustomPomodoroTimer($event)"
+            @change="SetCustomPomodoroTimer($event)"
           />
         </div>
         <div class="customTimer">
@@ -161,7 +173,7 @@ export default {
             min="1"
             max="99"
             :value="settings.shortTimer / 60"
-            @change="setCustomShortTimer($event)"
+            @change="SetCustomShortTimer($event)"
           />
         </div>
         <div class="customTimer">
@@ -171,17 +183,17 @@ export default {
             min="1"
             max="99"
             :value="settings.longTimer / 60"
-            @change="setCustomLongTimer($event)"
+            @change="SetCustomLongTimer($event)"
           />
         </div>
       </div>
       <div class="buttons box">
         <router-link to="/"
-          ><button @click="saveToLocal()">Save</button></router-link
+          ><button @click="SaveToLocal()">Save</button></router-link
         >
 
         <button>Reset</button>
-        <button @click="playSound()">Sound Test</button>
+        <button @click="PlaySound()">Sound Test</button>
       </div>
     </div>
   </div>

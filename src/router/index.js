@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import Home from '../views/Home.vue'
 import Settings from '../views/Settings.vue'
 import Faq from '../views/Faq.vue'
+import Log from '../views/Log.vue'
 
 const routes = [
     {
@@ -20,6 +21,11 @@ const routes = [
         name: 'Faq',
         component: Faq
     },
+    {
+        path: '/log',
+        name: 'Log',
+        component: Log
+    }
 
 ]
 

@@ -18,7 +18,7 @@ export default {
     ]),
   },
   methods: {
-    doAction() {
+    DoAction() {
       if (this.title === "stop") {
         this.clearTimerNow;
       } else if (this.title === "start") {
@@ -33,7 +33,7 @@ export default {
 
 <template>
   <div class="mainDiv">
-    <button v-on:click="doAction()" v-bind:style="{ background: buttonColor }">
+    <button v-on:click="DoAction()" v-bind:style="{ background: buttonColor }">
       {{ buttonName }}
     </button>
   </div>
@@ -44,6 +44,10 @@ button {
   width: 100px;
   height: 50px;
   text-transform: capitalize;
+  border: none;
+}
+button:hover {
+  border-bottom: 2px solid rgb(79, 197, 79);
 }
 .mainDiv {
   display: flex;

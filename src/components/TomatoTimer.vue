@@ -34,9 +34,6 @@ export default {
         <timer-control-button title="stop" color="#8b0000" />
         <timer-control-button title="reset" color="#efefef" />
       </div>
-      <div class="footer">
-        <Footer />
-      </div>
     </div>
   </div>
 </template>

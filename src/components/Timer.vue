@@ -1,24 +1,22 @@
 <script>
 import { mapActions, mapState } from "vuex";
+import { Howl, Howler } from "howler";
 export default {
   data() {
     return {
-      loaded: 0,
       timer: 0,
     };
-  },
-  mounted() {
-    this.loaded = new Date().getTime();
   },
   computed: {
     ...mapActions(["clearTimerNow"]),
     ...mapState({
       actualTimer: (state) => state.actualTimer,
       defaultTimer: (state) => state.defaultTimer,
+      settings: (state) => state.settings,
     }),
   },
   methods: {
-    showTimer: function () {
+    ShowTimer: function () {
       if (this.actualTimer >= 0) {
         let min = Math.floor(this.actualTimer / 60)
           .toString()
@@ -27,9 +25,17 @@ export default {
         let result = min + ":" + sec;
         return result;
       } else {
+        this.PlaySound();
         this.clearTimerNow;
         return "00:00";
       }
+    },
+    PlaySound() {
+      let sound = new Howl({
+        src: [this.settings.actualSoundSrc],
+      });
+      sound.play();
+      Howler.volume(this.settings.actualVolume);
     },
   },
 };
@@ -37,7 +43,7 @@ export default {
 
 <template>
   <div class="timer">
-    <h1 class="timer-number">{{ showTimer() }}</h1>
+    <h1 class="timer-number">{{ ShowTimer() }}</h1>
   </div>
 </template>
 

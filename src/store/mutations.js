@@ -26,13 +26,25 @@ export default {
         }
     },
     updateTitleNotification(state, payload) {
-        state.titleNotification = payload;
+        if (payload == "on") {
+            state.settings.titleNotification = true;
+        } else {
+            state.settings.titleNotification = false;
+        }
     },
     updateBrowserNotification(state, payload) {
-        state.browserNotification = payload;
+        if (payload == "on") {
+            state.settings.browserNotification = false;
+        } else {
+            state.settings.browserNotification = true;
+        }
+
+    },
+    updatePomodoroGoal(state, payload) {
+        state.settings.numberOfDailyPomodoros = payload;
     },
     setSupposedTimer(state, payload) {
-        state.supossedTimer = payload;
+        state.settings.supossedTimer = payload;
     },
     setSoundSource(state, payload) {
         state.settings.actualSoundSrc = payload;
@@ -51,5 +63,8 @@ export default {
     },
     setCustomLongTimer(state, payload) {
         state.settings.longTimer = Number(payload);
+    },
+    updateSettings(state, payload) {
+        state.settings = payload;
     }
 }

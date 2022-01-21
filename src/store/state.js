@@ -3,8 +3,8 @@ export default {
         longTimer: 10 * 60,
         shortTimer: 5 * 60,
         pomodoroTimer: 25 * 60,
-        titleNotification: false,
-        browserNotification: false,
+        titleNotification: "false",
+        browserNotification: "false",
         numberOfDailyPomodoros: 1,
         defaultTimerVolumes: {
             "mute": "0.0",
@@ -13,7 +13,7 @@ export default {
             "75%": "0.75",
             "100%": "1.0"
         },
-        actualVolume: "",
+        actualVolume: "0.75",
         timerSoundSrc: "",
         defaultSoundSrc: {
             "analogalarm": "/sounds/analog-alarm-clock.wav",
@@ -22,7 +22,7 @@ export default {
             "doorbell": "/sounds/doorbell-e.wav",
             "elevatorDing": "/sounds/elevator-ding.wav"
         },
-        actualSoundSrc: "",
+        actualSoundSrc: "/sounds/analog-alarm-clock.wav",
         customTimer: null,
         defaultSettings: {
             "timerIndication": "false",
@@ -38,7 +38,7 @@ export default {
         }
 
     },
-    actualTimer: 0,
+    actualTimer: 25 * 60,
     supossedTimer: 0,
     interval: null,
 } 
