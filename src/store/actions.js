@@ -21,4 +21,8 @@ export default {
         commit("setSupposedTimer", payload)
     },
 
+    revertToDefaultSettings({ commit }, payload) {
+        commit("updatePomodoroGoal", payload.numberOfDailyPomodoros);
+        console.log("action payload is", payload)
+    }
 }
