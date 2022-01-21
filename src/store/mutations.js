@@ -25,21 +25,6 @@ export default {
             state.interval = null;
         }
     },
-    updateTitleNotification(state, payload) {
-        if (payload == "on") {
-            state.settings.titleNotification = true;
-        } else {
-            state.settings.titleNotification = false;
-        }
-    },
-    updateBrowserNotification(state, payload) {
-        if (payload == "on") {
-            state.settings.browserNotification = false;
-        } else {
-            state.settings.browserNotification = true;
-        }
-
-    },
     updatePomodoroGoal(state, payload) {
         state.settings.numberOfDailyPomodoros = payload;
     },

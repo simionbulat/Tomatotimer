@@ -4,7 +4,7 @@ export default {
         shortTimer: 5 * 60,
         pomodoroTimer: 25 * 60,
         titleNotification: "false",
-        browserNotification: "false",
+        // browserNotification: "false",
         numberOfDailyPomodoros: 1,
         defaultTimerVolumes: {
             "mute": "0.0",
@@ -18,7 +18,6 @@ export default {
         defaultSoundSrc: {
             "analogalarm": "/sounds/analog-alarm-clock.wav",
             "beep": "/sounds/beep.mp3",
-            "bell": "/sounds/bell.wav",
             "doorbell": "/sounds/doorbell-e.wav",
             "elevatorDing": "/sounds/elevator-ding.wav"
         },
@@ -41,4 +40,5 @@ export default {
     actualTimer: 25 * 60,
     supossedTimer: 0,
     interval: null,
+    now: new Date()
 } 

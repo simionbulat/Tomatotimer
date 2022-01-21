@@ -8,12 +8,7 @@ export default {
       message: "message",
       soundKey: "",
       volumeKey: "",
-      customPomodoro: "",
-      customShortTimer: "",
-      customLongTimer: "",
-      localSessionStore: {},
       getLocalSessionStore: {},
-      actualSettings: {},
     };
   },
   mounted() {
@@ -30,14 +25,6 @@ export default {
       this.getLocalSessionStore = JSON.parse(localStorage.getItem("settings"));
       this.$store.commit("updateSettings", this.getLocalSessionStore);
     },
-    // UpdateTitleNotification(e) {
-    //   console.log(e);
-
-    //   // this.$store.commit("updateTitleNotification", e.target.value);
-    // },
-    // UpdateBrowserNotification(e) {
-    //   // this.$store.commit("updateBrowserNotification", e.target.value);
-    // },
     UpdatePomodoroGoal(e) {
       this.$store.commit("updatePomodoroGoal", e.target.value);
     },
@@ -97,7 +84,7 @@ export default {
         <label for="timerNotifications">Timer indication in title?</label>
       </div>
 
-      <div class="box">
+      <!-- <div class="box">
         <input
           id="browserNotification"
           type="checkbox"
@@ -105,7 +92,7 @@ export default {
           @change="UpdateBrowserNotification($event)"
         />
         <label for="browserNotification">Browser Notifications?</label>
-      </div>
+      </div> -->
       <div class="box">
         <label for="pomodoroGoal">Pomodoro goal for the day </label>
         <input
@@ -129,7 +116,6 @@ export default {
         >
           <option value="analogalarm">Analog Alarm</option>
           <option value="beep">Beep</option>
-          <option value="bell">Door Bell</option>
           <option value="elevatorDing">Elevator Ding</option>
           <option value="doorbell">Door Bell</option>
         </select>

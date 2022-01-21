@@ -23,12 +23,24 @@ export default {
           .padStart(2, "0");
         let sec = (this.actualTimer % 60).toString().padStart(2, "0");
         let result = min + ":" + sec;
+        if (this.settings.titleNotification) {
+          this.AppendToTitle(result);
+        } else {
+          this.ReverseTitle();
+        }
         return result;
       } else {
         this.PlaySound();
         this.clearTimerNow;
         return "00:00";
       }
+    },
+    AppendToTitle(text) {
+      let newTitle = "(" + text + ") Tomato Timer";
+      document.title = newTitle;
+    },
+    ReverseTitle() {
+      document.title = "Tomato Timer";
     },
     PlaySound() {
       let sound = new Howl({
