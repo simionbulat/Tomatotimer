@@ -17,7 +17,9 @@ export default {};
         <li>
           <router-link to="/settings">Settings</router-link>
         </li>
-        <li><a href="">Tweet about us!</a></li>
+        <li>
+          <a href="https://www.twitter.com" target="_blank">Tweet about us!</a>
+        </li>
       </ul>
     </div>
   </div>
