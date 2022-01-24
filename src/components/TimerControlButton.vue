@@ -15,14 +15,6 @@ export default {
       "setTimerNow",
       "clearTimerNow",
     ]),
-    // SetupKeyboardListeners() {
-    //   windows.addEventListener("startStopTimer", (event) => {
-    //     this.DoAction();
-    //   });
-    // },
-    // RemoveKeyboardListener() {
-    //   window.removeEventListener("startStopTimer");
-    // },
   },
   methods: {
     DoAction() {
@@ -33,9 +25,6 @@ export default {
       } else {
         this.resetTimer;
       }
-    },
-    DoAnotherAction(e) {
-      console.log(e.code);
     },
   },
 };
