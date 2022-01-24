@@ -10,12 +10,19 @@ export default {
   },
   computed: {
     ...mapActions([
-      "clearTheInterval",
       "resetTimer",
       "timerWorking",
       "setTimerNow",
       "clearTimerNow",
     ]),
+    // SetupKeyboardListeners() {
+    //   windows.addEventListener("startStopTimer", (event) => {
+    //     this.DoAction();
+    //   });
+    // },
+    // RemoveKeyboardListener() {
+    //   window.removeEventListener("startStopTimer");
+    // },
   },
   methods: {
     DoAction() {
@@ -27,8 +34,8 @@ export default {
         this.resetTimer;
       }
     },
-    DoStuff() {
-      console.log("o mers butonu");
+    DoAnotherAction(e) {
+      console.log(e.code);
     },
   },
 };
@@ -36,7 +43,11 @@ export default {
 
 <template>
   <div class="mainDiv">
-    <button v-on:click="DoAction()" v-bind:style="{ background: buttonColor }">
+    <button
+      v-on:click="DoAction()"
+      @keydown="DoAnotherAction($event)"
+      v-bind:style="{ background: buttonColor }"
+    >
       {{ buttonName }}
     </button>
   </div>
