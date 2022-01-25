@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   props: { title: String, color: String },
   data() {
@@ -9,17 +9,15 @@ export default {
     };
   },
   computed: {
-    ...mapActions([
-      "resetTimer",
-      "timerWorking",
-      "setTimerNow",
-      "clearTimerNow",
-    ]),
+    ...mapActions(["resetTimer", "setTimerNow", "clearIntervalNow"]),
+    ...mapState({
+      getSettings: (state) => state.settings,
+    }),
   },
   methods: {
     DoAction() {
       if (this.title === "stop") {
-        this.clearTimerNow;
+        this.clearIntervalNow;
       } else if (this.title === "start") {
         this.setTimerNow;
       } else {
@@ -32,11 +30,7 @@ export default {
 
 <template>
   <div class="mainDiv">
-    <button
-      v-on:click="DoAction()"
-      @keydown="DoAnotherAction($event)"
-      v-bind:style="{ background: buttonColor }"
-    >
+    <button v-on:click="DoAction()" v-bind:style="{ background: buttonColor }">
       {{ buttonName }}
     </button>
   </div>

@@ -7,29 +7,25 @@ export default {
       buttonName: this.name,
     };
   },
-  computed: mapState({
-    getLongTimer: (state) => state.settings.longTimer,
-    getPomodoroTimer: (state) => state.settings.pomodoroTimer,
-    getShortTimer: (state) => state.settings.shortTimer,
-  }),
-
+  computed: {
+    ...mapState({
+      getLongTimer: (state) => state.settings.longTimer,
+      getPomodoroTimer: (state) => state.settings.pomodoroTimer,
+      getShortTimer: (state) => state.settings.shortTimer,
+    }),
+  },
   methods: {
-    ...mapActions(["changeTimer", "setSupposedTimer"]),
+    ...mapActions(["changeTimerAndSupposedTimer"]),
     ChangeTheTimer: function () {
       switch (this.name) {
         case "Pomodoro":
-          this.changeTimer(this.getPomodoroTimer);
-          this.setSupposedTimer(this.getPomodoroTimer);
+          this.changeTimerAndSupposedTimer(this.getPomodoroTimer);
           break;
         case "Short Break":
-          this.changeTimer(this.getShortTimer);
-          this.setSupposedTimer(this.getShortTimer);
-
+          this.changeTimerAndSupposedTimer(this.getShortTimer);
           break;
         case "Long Break":
-          this.changeTimer(this.getLongTimer);
-          this.setSupposedTimer(this.getLongTimer);
-
+          this.changeTimerAndSupposedTimer(this.getLongTimer);
           break;
       }
     },

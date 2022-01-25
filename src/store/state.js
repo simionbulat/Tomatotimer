@@ -37,7 +37,11 @@ export default {
         }
 
     },
+    timerLog: [],
     actualTimer: 25 * 60,
     supossedTimer: 0,
     interval: null,
+    completedTimerText: "00:00",
+    isTimerCompleted: false,
+    timerName: "pomodoro"
 } 

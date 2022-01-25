@@ -20,10 +20,12 @@ export default {
         }, 1000)
     },
     clearIntervalTimer(state) {
-        if (state.interval) {
+        if (state.interval != null) {
             clearInterval(state.interval)
-            state.interval = null;
         }
+    },
+    setIntervalToNull(state) {
+        state.interval = null;
     },
     updateTitleNotification(state, payload) {
         if (payload == "on") {
@@ -44,7 +46,7 @@ export default {
         state.settings.numberOfDailyPomodoros = payload;
     },
     setSupposedTimer(state, payload) {
-        state.settings.supossedTimer = payload;
+        state.supossedTimer = payload;
     },
     setSoundSource(state, payload) {
         state.settings.actualSoundSrc = payload;
@@ -66,5 +68,15 @@ export default {
     },
     updateSettings(state, payload) {
         state.settings = payload;
+    },
+    addTimerToLog(state, payload) {
+        state.timerLog.push(payload);
+    },
+    toggleTimerCompleted(state) {
+        state.isTimerCompleted = !state.isTimerCompleted;
+    },
+    setTimerName(state, payload) {
+        state.timerName = payload;
     }
+
 }
